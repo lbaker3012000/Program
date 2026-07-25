@@ -5,19 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<title>Bridge</title>
+<title>Phase 1</title>
 <style>
 :root{
   --bg:#0d0d0f;--bg2:#17171a;--bg3:#202024;--bg4:#2a2a2f;
   --border:#2c2c32;--border2:#3a3a42;
   --text:#f0f0f3;--text2:#8e8e9e;--text3:#4a4a58;
   --blue:#5b9ef9;--blue-bg:#0c1e3a;--blue-dim:#0f2040;--blue-text:#8bbfff;
-  --green:#4caf50;--green-bg:#0f2210;--green-text:#7ed081;
+  --green-bg:#0f2210;--green-text:#7ed081;
   --amber:#f0a500;--amber-bg:#291c03;--amber-text:#fbbf24;
   --red-bg:#280c0c;--red-text:#f87171;
   --pink-bg:#220d1a;--pink-text:#f0a0c8;
   --gray-bg:#202024;--gray-text:#7878a0;
   --teal-bg:#081e18;--teal-text:#4ecfa0;
+  --purple-bg:#1a1030;--purple-text:#c084fc;
   --r:14px;--rsm:9px;
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
@@ -26,74 +27,58 @@ body{padding:0 0 120px}
 
 .hdr{background:var(--bg2);border-bottom:1px solid var(--border);padding:16px 18px 14px;position:sticky;top:0;z-index:100}
 .hdr-row{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
-.app-title{font-size:20px;font-weight:800;letter-spacing:-0.5px}
-.app-sub{font-size:13px;color:var(--text2);margin-top:3px}
-.countdown{display:inline-block;background:var(--amber-bg);color:var(--amber-text);font-size:12px;font-weight:700;padding:4px 11px;border-radius:20px;margin-top:8px}
-.hdr-gl{text-align:right;flex-shrink:0}
-.gl-lbl{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:0.6px;margin-bottom:3px}
-.gl-val{font-size:22px;font-weight:800;color:var(--blue-text);letter-spacing:-0.5px}
-.gl-sub{font-size:11px;color:var(--text2);margin-top:1px}
+.title{font-size:20px;font-weight:800;letter-spacing:-0.5px}
+.sub{font-size:13px;color:var(--text2);margin-top:3px}
+.pill{display:inline-block;background:var(--purple-bg);color:var(--purple-text);font-size:12px;font-weight:700;padding:4px 11px;border-radius:20px;margin-top:8px}
+.hdr-r{text-align:right;flex-shrink:0}
+.hr-lbl{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:0.6px;margin-bottom:3px}
+.hr-val{font-size:22px;font-weight:800;color:var(--purple-text);letter-spacing:-0.5px}
+.hr-sub{font-size:11px;color:var(--text2);margin-top:1px}
 
-.tm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:16px 18px}
-.tm-card{background:var(--bg2);border-radius:var(--rsm);padding:13px 14px;border:1px solid var(--border)}
-.tm-lbl{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:0.6px;margin-bottom:5px;font-weight:600}
-.tm-val{font-size:24px;font-weight:800;letter-spacing:-0.6px}
-.tm-unit{font-size:13px;color:var(--text2);margin-left:2px;font-weight:400}
-.tm-div{border-top:1px solid var(--border);margin-top:10px;padding-top:8px}
-.tm-sub-lbl{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:3px}
-.tm-sub-val{font-size:16px;font-weight:700;color:var(--text2);letter-spacing:-0.3px}
+.nav{display:flex;gap:8px;padding:14px 18px 0}
+.navbtn{flex:1;font-size:14px;padding:9px 0;border-radius:24px;border:1px solid var(--border2);background:transparent;color:var(--text2);font-weight:600;cursor:pointer;transition:all .15s}
+.navbtn.act{background:var(--blue-dim);color:var(--blue-text);border-color:var(--blue)}
 
-.sec-lbl{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:0.7px;font-weight:700;padding:0 18px 8px}
+.tmgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:16px 18px}
+.tmc{background:var(--bg2);border-radius:var(--rsm);padding:13px 14px;border:1px solid var(--border)}
+.tml{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:0.6px;margin-bottom:5px;font-weight:600}
+.tmv{font-size:24px;font-weight:800;letter-spacing:-0.6px}
+.tmu{font-size:13px;color:var(--text2);margin-left:2px;font-weight:400}
+.tmd{border-top:1px solid var(--border);margin-top:10px;padding-top:8px}
+.tmsl{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:3px}
+.tmsv{font-size:16px;font-weight:700;color:var(--text2);letter-spacing:-0.3px}
+
+.slbl{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:0.7px;font-weight:700;padding:0 18px 8px}
 .sched{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;padding:0 18px 20px}
 .sday{border-radius:var(--rsm);padding:9px 4px;text-align:center}
-.sd-d{font-size:10px;font-weight:700;margin-bottom:4px;opacity:0.75}
-.sd-n{font-size:11px;font-weight:700;line-height:1.3}
-.sd-s{font-size:9px;margin-top:3px;opacity:0.6;line-height:1.3}
+.sdd{font-size:10px;font-weight:700;margin-bottom:4px;opacity:.75}
+.sdn{font-size:11px;font-weight:700;line-height:1.3}
+.sds{font-size:9px;margin-top:3px;opacity:.6;line-height:1.3}
 
-.bwrap{padding:0 18px;margin-bottom:10px}
-.bbadge{display:inline-flex;align-items:center;font-size:12px;font-weight:700;padding:5px 13px;border-radius:20px;margin-bottom:10px}
-.ba{background:var(--blue-bg);color:var(--blue-text)}
-.bi{background:var(--green-bg);color:var(--green-text)}
-.bp{background:var(--amber-bg);color:var(--amber-text)}
-.bd{background:var(--bg3);color:var(--gray-text)}
+.wwrap{padding:0 18px;margin-bottom:12px}
 .wscroll{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .wscroll::-webkit-scrollbar{display:none}
-.wcard{flex-shrink:0;width:112px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--rsm);padding:11px 12px;cursor:pointer;transition:all 0.15s}
+.wcard{flex-shrink:0;width:96px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--rsm);padding:11px 12px;cursor:pointer;transition:all .15s}
 .wcard.sel{border-color:var(--blue);background:var(--blue-dim)}
-.wcard.deload{opacity:0.5}
-.wcard.capped{border-color:var(--amber)}
-.wk-n{font-size:11px;color:var(--text3);font-weight:700}
-.wk-t{font-size:13px;font-weight:700;margin-top:3px;line-height:1.3}
-.wk-rpe{font-size:11px;color:var(--text2);margin-top:3px}
-.wk-dt{font-size:10px;color:var(--text3);margin-top:4px}
-.wk-cap{font-size:10px;color:var(--amber-text);margin-top:3px;font-weight:700}
+.wn{font-size:11px;color:var(--text3);font-weight:700}
+.wt{font-size:15px;font-weight:800;margin-top:3px;letter-spacing:-0.3px}
+.wr{font-size:11px;color:var(--text2);margin-top:3px}
 
-.sarea{padding:14px 18px 0}
-.pnote{background:var(--bg3);padding:13px 16px;font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:16px;border-left:3px solid var(--blue);border-radius:0 var(--rsm) var(--rsm) 0}
-
-.vol-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;margin-bottom:16px}
-.vol-title{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:0.7px;font-weight:700;margin-bottom:12px}
-.vol-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
-.vol-row:last-child{margin-bottom:0}
-.vol-name{width:62px;font-size:13px;color:var(--text2);flex-shrink:0}
-.vol-bg{flex:1;background:var(--bg4);border-radius:4px;height:8px;overflow:hidden}
-.vol-fill{height:100%;border-radius:4px}
-.vol-val{font-size:13px;font-weight:700;width:32px;text-align:right}
-
+.sarea{padding:0 18px}
 .dtabs{display:flex;gap:8px;margin-bottom:16px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px}
 .dtabs::-webkit-scrollbar{display:none}
-.dtab{flex-shrink:0;font-size:14px;padding:9px 18px;border-radius:24px;border:1px solid var(--border2);background:transparent;color:var(--text2);cursor:pointer;transition:all 0.15s;font-weight:600}
+.dtab{flex-shrink:0;font-size:14px;padding:9px 18px;border-radius:24px;border:1px solid var(--border2);background:transparent;color:var(--text2);cursor:pointer;font-weight:600;transition:all .15s}
 .dtab.act{background:var(--blue-dim);color:var(--blue-text);border-color:var(--blue)}
 
 .scard{background:var(--bg2);border-radius:var(--r);border:1px solid var(--border);overflow:hidden;margin-bottom:14px}
 .shead{display:flex;align-items:center;gap:12px;padding:15px 17px;border-bottom:1px solid var(--border)}
 .sic{width:42px;height:42px;border-radius:var(--rsm);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0}
 .sname{font-size:16px;font-weight:800;letter-spacing:-0.3px}
-.ssub{font-size:12px;color:var(--text2);margin-top:3px;line-height:1.5}
+.ssub{font-size:12px;color:var(--text2);margin-top:3px}
 
 .exrow{padding:15px 17px;border-bottom:1px solid var(--border)}
 .exrow:last-child{border-bottom:none}
-.exrow.bo{background:rgba(255,255,255,0.02);padding-left:28px}
+.exrow.bo{background:rgba(255,255,255,.02);padding-left:28px}
 .extop{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:11px}
 .exname{font-size:15px;font-weight:700;line-height:1.3;flex:1;letter-spacing:-0.1px}
 .exname.dim{font-weight:400;color:var(--text2);font-size:14px}
@@ -103,27 +88,29 @@ body{padding:0 0 120px}
 .tv{background:var(--pink-bg);color:var(--pink-text)}
 .ta{background:var(--gray-bg);color:var(--gray-text)}
 .tr{background:var(--teal-bg);color:var(--teal-text)}
+.tb{background:var(--purple-bg);color:var(--purple-text)}
 .ts{background:var(--bg4);color:var(--text3)}
-.rpetag{font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px}
+.rp{font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px}
 .rlo{background:var(--green-bg);color:var(--green-text)}
 .rmd{background:var(--amber-bg);color:var(--amber-text)}
 .rhi{background:var(--red-bg);color:var(--red-text)}
 .exdet{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px}
 .exd{background:var(--bg3);border-radius:var(--rsm);padding:11px 12px}
 .exdl{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:0.6px;margin-bottom:5px;font-weight:700}
-.exdv{font-size:17px;font-weight:800;line-height:1.2;letter-spacing:-0.4px}
-.exdp{font-size:11px;color:var(--text2);margin-top:3px}
+.exdv{font-size:18px;font-weight:800;line-height:1.2;letter-spacing:-0.4px}
+.exdv.big{color:var(--blue-text)}
 .exnote{font-size:13px;color:var(--text2);line-height:1.65}
 
-.dlcard{background:var(--bg2);border-radius:var(--r);border:1px solid var(--border);padding:24px 20px;margin-bottom:14px}
-.dltitle{font-size:19px;font-weight:800;margin-bottom:8px;letter-spacing:-0.4px}
-.dlsub{font-size:14px;color:var(--text2);margin-bottom:20px;line-height:1.6}
-.dllist{list-style:none}
-.dllist li{padding:10px 0;font-size:14px;border-bottom:1px solid var(--border);color:var(--text2);line-height:1.6}
-.dllist li:last-child{border-bottom:none}
-.dllist strong{color:var(--text);font-weight:700}
+.pnote{background:var(--bg3);padding:13px 16px;font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:16px;border-left:3px solid var(--blue);border-radius:0 var(--rsm) var(--rsm) 0}
 
-.snote{font-size:13px;color:var(--text2);background:var(--bg3);border-radius:0 var(--rsm) var(--rsm) 0;padding:12px 15px;margin-top:10px;line-height:1.65;border-left:3px solid var(--border2)}
+.ncard{background:var(--bg2);border-radius:var(--r);border:1px solid var(--border);margin-bottom:12px;overflow:hidden}
+.nhead{padding:14px 17px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.nic{width:34px;height:34px;border-radius:var(--rsm);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;flex-shrink:0}
+.ntitle{font-size:15px;font-weight:800;letter-spacing:-0.2px}
+.nbody{padding:6px 17px 14px}
+.nitem{padding:10px 0;border-bottom:1px solid var(--border);font-size:14px;color:var(--text2);line-height:1.65}
+.nitem:last-child{border-bottom:none}
+.nitem strong{color:var(--text);font-weight:700}
 </style>
 </head>
 <body>
@@ -131,289 +118,269 @@ body{padding:0 0 120px}
 <div class="hdr">
   <div class="hdr-row">
     <div>
-      <div class="app-title">Bridge</div>
-      <div class="app-sub">93kg · SQ 240 / BP 180 / DL 270</div>
-      <div class="countdown" id="cd">...</div>
+      <div class="title">Phase 1</div>
+      <div class="sub">6-week deficit block · retention + singles</div>
+      <div class="pill" id="pill">91 → 87.5kg</div>
     </div>
-    <div class="hdr-gl">
-      <div class="gl-lbl">Target GL</div>
-      <div class="gl-val">94.2</div>
-      <div class="gl-sub">720kg total</div>
-    </div>
-  </div>
-</div>
-
-<div class="tm-grid">
-  <div class="tm-card">
-    <div class="tm-lbl">Squat TM</div>
-    <div class="tm-val">240<span class="tm-unit">kg</span></div>
-    <div class="tm-div">
-      <div class="tm-sub-lbl">Pause squat</div>
-      <div class="tm-sub-val">215<span class="tm-unit">kg</span></div>
-    </div>
-  </div>
-  <div class="tm-card">
-    <div class="tm-lbl">Bench TM</div>
-    <div class="tm-val">180<span class="tm-unit">kg</span></div>
-    <div class="tm-div">
-      <div class="tm-sub-lbl">Close-grip</div>
-      <div class="tm-sub-val">170<span class="tm-unit">kg</span></div>
-    </div>
-  </div>
-  <div class="tm-card">
-    <div class="tm-lbl">Deadlift TM</div>
-    <div class="tm-val">270<span class="tm-unit">kg</span></div>
-    <div class="tm-div">
-      <div class="tm-sub-lbl">Deficit DL</div>
-      <div class="tm-sub-val">255<span class="tm-unit">kg</span></div>
+    <div class="hdr-r">
+      <div class="hr-lbl">Protein</div>
+      <div class="hr-val">200<span style="font-size:13px;color:var(--text2)">g</span></div>
+      <div class="hr-sub">~600 deficit</div>
     </div>
   </div>
 </div>
 
-<div class="sec-lbl">Weekly schedule</div>
+<div class="nav">
+  <button class="navbtn act" id="nav0" onclick="setView(0)">Program</button>
+  <button class="navbtn" id="nav1" onclick="setView(1)">Notes</button>
+</div>
+
+<div id="view0">
+<div class="tmgrid">
+  <div class="tmc">
+    <div class="tml">Squat TM</div>
+    <div class="tmv">245<span class="tmu">kg</span></div>
+    <div class="tmd"><div class="tmsl">Pause squat</div><div class="tmsv">215<span class="tmu">kg</span></div></div>
+  </div>
+  <div class="tmc">
+    <div class="tml">Bench TM</div>
+    <div class="tmv">185<span class="tmu">kg</span></div>
+    <div class="tmd"><div class="tmsl">Close-grip</div><div class="tmsv">170<span class="tmu">kg</span></div></div>
+  </div>
+  <div class="tmc">
+    <div class="tml">Deadlift TM</div>
+    <div class="tmv">270<span class="tmu">kg</span></div>
+    <div class="tmd"><div class="tmsl">Est. fresh max</div><div class="tmsv">275<span class="tmu">kg</span></div></div>
+  </div>
+</div>
+
+<div class="slbl">Weekly schedule</div>
 <div class="sched" id="sched"></div>
-<div id="blocks"></div>
+
+<div class="slbl">Week</div>
+<div class="wwrap"><div class="wscroll" id="weeks"></div></div>
+
 <div class="sarea" id="main"></div>
+</div>
+
+<div id="view1" style="display:none">
+<div class="sarea" style="padding-top:16px" id="notes"></div>
+</div>
 
 <script>
-const TM={sq:240,bp:180,dl:270,cg:170,ps:215,dd:255};
-function kg(l,p){return Math.round(TM[l]*p/2.5)*2.5}
-function bo(l,p){return Math.round(TM[l]*p*0.90/2.5)*2.5}
-
-(function(){
-  const d=Math.ceil((new Date('2026-07-26')-new Date())/864e5);
-  document.getElementById('cd').textContent=d>0?`${d} days to competition`:'Competition day!';
-})();
-
 const SCHED=[
-  {d:'Mon',n:'Day 1',s:'Squat',bg:'#0c1e3a',tc:'#8bbfff',tr:1},
-  {d:'Tue',n:'Day 2',s:'Bench',bg:'#0f2210',tc:'#7ed081',tr:1},
-  {d:'Wed',n:'Rest',s:'Recovery',bg:'#17171a',tc:'#4a4a58',tr:0},
-  {d:'Thu',n:'Day 3',s:'Deadlift',bg:'#291c03',tc:'#fbbf24',tr:1},
-  {d:'Fri',n:'Day 4',s:'Sq var',bg:'#220d1a',tc:'#f0a0c8',tr:1},
-  {d:'Sat',n:'Day 5',s:'Bench var',bg:'#1a1a1e',tc:'#7878a0',tr:1},
-  {d:'Sun',n:'Rest',s:'Recovery',bg:'#17171a',tc:'#4a4a58',tr:0}
+  {d:'Mon',n:'Day 1',s:'Squat',bg:'#0c1e3a',tc:'#8bbfff'},
+  {d:'Tue',n:'Day 2',s:'Bench',bg:'#0f2210',tc:'#7ed081'},
+  {d:'Wed',n:'Rest',s:'Recovery',bg:'#17171a',tc:'#4a4a58'},
+  {d:'Thu',n:'Day 3',s:'Deadlift',bg:'#291c03',tc:'#fbbf24'},
+  {d:'Fri',n:'Day 4',s:'Sq volume',bg:'#220d1a',tc:'#f0a0c8'},
+  {d:'Sat',n:'Day 5',s:'Bp volume',bg:'#1a1a1e',tc:'#7878a0'},
+  {d:'Sun',n:'Rest',s:'Recovery',bg:'#17171a',tc:'#4a4a58'}
 ];
 document.getElementById('sched').innerHTML=SCHED.map(s=>
   `<div class="sday" style="background:${s.bg}">
-    <div class="sd-d" style="color:${s.tc}">${s.d}</div>
-    <div class="sd-n" style="color:${s.tc}">${s.n}</div>
-    <div class="sd-s" style="color:${s.tc}">${s.s}</div>
-  </div>`
-).join('');
+    <div class="sdd" style="color:${s.tc}">${s.d}</div>
+    <div class="sdn" style="color:${s.tc}">${s.n}</div>
+    <div class="sds" style="color:${s.tc}">${s.s}</div>
+  </div>`).join('');
 
-const WEEKS=[
-  {n:'Wk 1',dt:'12–18 Apr',ty:'Accumulation',rpe:'RPE 7–7.5',ph:0,wi:0,dl:0},
-  {n:'Wk 2',dt:'19–25 Apr',ty:'Accumulation',rpe:'RPE 7.5–8',ph:0,wi:1,dl:0},
-  {n:'Wk 3',dt:'26 Apr–2 May',ty:'Accumulation+',rpe:'RPE 8–8.5',ph:0,wi:2,dl:0},
-  {n:'Wk 4',dt:'3–9 May',ty:'Overreach',rpe:'RPE 8–8.5',ph:0,wi:3,dl:0,cap:1},
-  {n:'Wk 5',dt:'10–16 May',ty:'Deload I',rpe:'RPE 5–6',ph:-1,wi:0,dl:1},
-  {n:'Wk 6',dt:'17–23 May',ty:'Intensification',rpe:'RPE 7.5–8.5',ph:1,wi:0,dl:0},
-  {n:'Wk 7',dt:'24–30 May',ty:'Intensification',rpe:'RPE 8–9',ph:1,wi:1,dl:0},
-  {n:'Wk 8',dt:'31 May–6 Jun',ty:'Intensification+',rpe:'RPE 8.5–9',ph:1,wi:2,dl:0},
-  {n:'Wk 9',dt:'7–13 Jun',ty:'Overreach',rpe:'RPE 8.5',ph:1,wi:3,dl:0,cap:1},
-  {n:'Wk 10',dt:'14–20 Jun',ty:'Deload II',rpe:'RPE 5–6',ph:-1,wi:0,dl:1},
-  {n:'Wk 11',dt:'21–27 Jun',ty:'Peaking',rpe:'RPE 8–8.5',ph:2,wi:0,dl:0},
-  {n:'Wk 12',dt:'28 Jun–4 Jul',ty:'Peaking+',rpe:'RPE 8.5–9',ph:2,wi:1,dl:0},
-  {n:'Wk 13',dt:'5–11 Jul',ty:'Peak intensity',rpe:'RPE 9–9.5',ph:2,wi:2,dl:0},
-  {n:'Wk 14',dt:'12–18 Jul',ty:'Opener prep',rpe:'RPE 7.5–8',ph:2,wi:3,dl:0},
-  {n:'Wk 15',dt:'19–25 Jul',ty:'Taper',rpe:'RPE 5–6',ph:-1,wi:0,dl:1,taper:1}
-];
-const BGROUPS=[
-  {lb:'Block 1 — Accumulation',wks:[0,1,2,3],cl:'ba'},
-  {lb:'Deload I',wks:[4],cl:'bd'},
-  {lb:'Block 2 — Intensification',wks:[5,6,7,8],cl:'bi'},
-  {lb:'Deload II',wks:[9],cl:'bd'},
-  {lb:'Block 3 — Peaking',wks:[10,11,12,13],cl:'bp'},
-  {lb:'Taper',wks:[14],cl:'bd'}
-];
+const RPE=[6.5,7,7.5,7.5,8,8.5];
+const SQ=[215,222.5,227.5,232.5,237.5,242.5];
+const SQB=[182.5,190,192.5,197.5,202.5,205];
+const BP=[150,157.5,162.5,167.5,172.5,177.5];
+const BPB=[127.5,135,137.5,142.5,147.5,150];
+const DL=[230,237.5,242.5,247.5,252.5,257.5];
+const DLB=[195,202.5,205,210,215,220];
+const PS=[150,155,160,162.5,165,170];
+const BPV=[120,122.5,125,127.5,130,132.5];
+const CG=[105,107.5,110,112.5,115,117.5];
+
 const DAYS=[
-  {n:'Day 1',name:'Squat primary',ic:'S1',bg:'#0c1e3a',tc:'#8bbfff'},
-  {n:'Day 2',name:'Bench primary',ic:'B1',bg:'#0f2210',tc:'#7ed081'},
-  {n:'Day 3',name:'Deadlift primary',ic:'D1',bg:'#291c03',tc:'#fbbf24'},
-  {n:'Day 4',name:'Squat var + hypertrophy',ic:'S2',bg:'#220d1a',tc:'#f0a0c8'},
-  {n:'Day 5',name:'Bench var + lower hyp',ic:'B2',bg:'#1a1a1e',tc:'#7878a0'}
+  {n:'Day 1',name:'Squat',ic:'S1',bg:'#0c1e3a',tc:'#8bbfff'},
+  {n:'Day 2',name:'Bench',ic:'B1',bg:'#0f2210',tc:'#7ed081'},
+  {n:'Day 3',name:'Deadlift',ic:'D1',bg:'#291c03',tc:'#fbbf24'},
+  {n:'Day 4',name:'Squat volume + lower',ic:'S2',bg:'#220d1a',tc:'#f0a0c8'},
+  {n:'Day 5',name:'Bench volume + upper',ic:'B2',bg:'#1a1a1e',tc:'#7878a0'}
 ];
 
-function cpct(ph,wi){return[{0:[.70,.73,.76],1:[.73,.76,.78],2:[.76,.78,.81],3:[.79,.82,.85]},{0:[.78,.81,.84],1:[.81,.84,.86],2:[.84,.86,.89],3:[.84,.86,.89]},{0:[.84,.87,.90],1:[.87,.90,.93],2:[.90,.93,.95],3:[.92,.92,.92]}][ph][wi]}
-function vpct(ph,wi){return[{0:[.68,.71,.74],1:[.71,.74,.76],2:[.74,.76,.79],3:[.77,.80,.83]},{0:[.76,.79,.82],1:[.79,.82,.84],2:[.82,.84,.87],3:[.85,.87,.90]},{0:[.82,.85,.88],1:[.85,.88,.91],2:[.88,.91,.93],3:[.91,.93,.95]}][ph][wi]}
-function csr(ph,wi){return[{0:[5,5],1:[5,5],2:[4,5],3:[3,5]},{0:[4,4],1:[4,4],2:[3,4],3:[2,4]},{0:[3,3],1:[3,3],2:[2,3],3:[1,1]}][ph][wi]}
-function vsr(ph,wi){return[{0:[4,4],1:[4,4],2:[3,4],3:[3,3]},{0:[4,3],1:[3,3],2:[3,3],3:[2,3]},{0:[3,3],1:[3,2],2:[2,2],3:[1,2]}][ph][wi]}
-function grpe(ph,wi){
-  const b=[{0:[7,7.5],1:[7.5,8],2:[8,8.5],3:[8.5,9]},{0:[7.5,8],1:[8,8.5],2:[8.5,9],3:[9,9.5]},{0:[8,8.5],1:[8.5,9],2:[9,9.5],3:[7.5,7.5]}][ph][wi];
-  if(ph===0&&wi===3)return[8,8.5];
-  if(ph===1&&wi===3)return[8.5,8.5];
-  return b;
-}
-function aS(ph,wi){if(ph===0)return 3;if(ph===1)return wi>=2?2:3;return wi>=2?1:2}
-function rC(r){if(!r)return'rlo';if(r>=9)return'rhi';if(r>=8)return'rmd';return'rlo'}
+function rc(r){if(r>=9)return'rhi';if(r>=8)return'rmd';return'rlo'}
 
-function buildSess(ph,wi,di){
-  const cp=cpct(ph,wi),vp=vpct(ph,wi),sr=csr(ph,wi),vs=vsr(ph,wi),rpe=grpe(ph,wi),as=aS(ph,wi);
-  const late=ph===2&&wi>=2,ar=ph===0?7:ph===1?7.5:8;
-  const sqLo=kg('sq',cp[0]),sqHi=kg('sq',cp[2]),sqBO=bo('sq',cp[2]);
-  const bpLo=kg('bp',cp[0]),bpHi=kg('bp',cp[2]),bpBO=bo('bp',cp[2]);
-  const dlLo=kg('dl',cp[0]),dlHi=kg('dl',cp[2]),dlBO=bo('dl',cp[2]);
-  const cgLo=kg('cg',vp[0]),cgHi=kg('cg',vp[2]);
-  const psLo=kg('ps',vp[0]),psHi=kg('ps',vp[2]);
-  const ddLo=kg('dd',vp[0]),ddHi=kg('dd',vp[2]);
-
-  function cR(lift,lo,hi,boff,r,note){
-    const rows=[],isOP=ph===2&&wi===3;
-    if(ph===0){
-      rows.push({name:`Competition ${lift}`,tag:'c',sets:sr[0],reps:sr[1],load:`${lo}–${hi}`,pct:`${Math.round(cp[0]*100)}–${Math.round(cp[2]*100)}%`,rpe:r,note:`Straight sets. Build across. ${note}`});
-    } else {
-      const bs=ph===1?Math.max(sr[0]-1,2):wi>=2?1:2;
-      rows.push({name:`Competition ${lift}`,tag:'c',sets:1,reps:sr[1],load:hi,pct:`~${Math.round(cp[2]*100)}%`,rpe:r,note:isOP?`Opener weight ~92% TM. Should feel RPE 7.5 — fast and smooth. ${note}`:`Top set at target RPE. ${note}`});
-      rows.push({name:'Backoff sets',tag:'s',sets:bs,reps:sr[1],load:boff,pct:'~90% top',rpe:Math.min(r+0.5,10),note:'Same lift. Full reset between sets.',bo:1});
-    }
-    return rows;
-  }
-
-  const D=[
-    [...cR('squat',sqLo,sqHi,sqBO,rpe[0],'3–5 min rest. Bar speed = autoregulation.'),
-     ...(!late?[{name:'Pause squat 2s',tag:'v',sets:vs[0],reps:vs[1],load:`${psLo}–${psHi}`,pct:`${Math.round(vp[0]*100)}–${Math.round(vp[2]*100)}% ps TM`,rpe:rpe[0],note:'TM=215kg. Dead stop at parallel. No bounce.'}]:[]),
-     {name:'Barbell row',tag:'a',sets:as,reps:'8–10',load:'RPE 7–8',pct:'',rpe:ar,note:'Overhand. Full scapular retraction.'},
-     {name:'45° back extension',tag:'a',sets:as,reps:'12–15',load:'BW / plate',pct:'',rpe:ar-0.5,note:'Erector spinae. Squeeze glutes at top.'},
-     {name:'Leg curl',tag:'a',sets:as,reps:'10–12',load:'RPE 7',pct:'',rpe:ar,note:'3s eccentric.'},
-     {name:'Copenhagen plank',tag:'r',sets:3,reps:'20–30s',load:'BW',pct:'',rpe:6,note:'Short lever Wks 1–4, long lever Wks 6+.'},
-     {name:'Ab wheel',tag:'a',sets:2,reps:'10–15',load:'BW',pct:'',rpe:6,note:'Anti-extension core.'}],
-
-    [...cR('bench press',bpLo,bpHi,bpBO,rpe[0],'Full arch, leg drive, lats.'),
-     {name:'Chest-supported DB row',tag:'a',sets:as,reps:'10–12',load:'RPE 7–8',pct:'',rpe:ar,note:'No posterior chain. Elbows 45°. Pause at top.'},
-     ...(ph<2?[{name:'Incline DB press',tag:'a',sets:as,reps:'8–10',load:'RPE 7–8',pct:'',rpe:ar,note:'Upper chest. 3s eccentric. Removed in peaking.'}]:[]),
-     ...(ph<2?[{name:'Skullcrusher / JM press',tag:'a',sets:as,reps:'8–10',load:'RPE 7',pct:'',rpe:ar-0.5,note:'Mid-range tricep. Removed in peaking.'}]:[]),
-     {name:'Tricep pushdown',tag:'a',sets:as,reps:'12–15',load:'RPE 6–7',pct:'',rpe:6,note:'Lockout accessory.'},
-     {name:'Face pulls',tag:'a',sets:2,reps:'15–20',load:'RPE 6',pct:'',rpe:6,note:'Shoulder health. Always 2 sets.'},
-     ...(ph<2?[{name:'Cable curl',tag:'a',sets:2,reps:'12',load:'RPE 6',pct:'',rpe:6,note:'Bicep tendon health.'}]:[])],
-
-    [...cR('deadlift',dlLo,dlHi,dlBO,rpe[1],'Max 3 sets total. 5 min rest. Vertical bar path.'),
-     {name:'Glute-ham raise',tag:'a',sets:as,reps:'6–10',load:'BW / assist',pct:'',rpe:ar,note:'Hip extension AND knee flex. 3s eccentric.'},
-     {name:'Lat pulldown',tag:'a',sets:as,reps:'8–10',load:'RPE 7–8',pct:'',rpe:ar,note:'Lat strength for bar path control.'},
-     ...(ph<2?[{name:'Seated cable row',tag:'a',sets:as,reps:'10–12',load:'RPE 7',pct:'',rpe:ar-0.5,note:'Horizontal pull. Removed in peaking.'}]:[]),
-     {name:'45° back extension',tag:'a',sets:as,reps:'12–15',load:'BW / plate',pct:'',rpe:ar-0.5,note:'Second erector hit. Keep in all phases.'},
-     {name:'Ab wheel',tag:'a',sets:2,reps:'10–12',load:'BW',pct:'',rpe:6,note:'Short session — leave feeling good.'}],
-
-    [...(!late?[{name:'Deficit deadlift 5cm',tag:'v',sets:vs[0],reps:vs[1],load:`${ddLo}–${ddHi}`,pct:`${Math.round(vp[0]*100)}–${Math.round(vp[2]*100)}% dd TM`,rpe:rpe[0],note:'TM=255kg. Separated from comp DL by rest day. Dropped Wks 13–14. Reduce to 2cm if adductor discomfort.'}]:[]),
-     {name:'SSB squat / hack squat',tag:'a',sets:ph<2?as+1:as,reps:ph<2?'6–8':'8–10',load:'RPE 7–8',pct:'',rpe:ar,note:'Quad hypertrophy. SSB preferred.'},
-     {name:'Barbell hip thrust',tag:'a',sets:as,reps:'8–10',load:'RPE 7–8',pct:'',rpe:ar,note:'Glute hypertrophy. Minimal spinal load.'},
-     {name:'Leg curl',tag:'a',sets:as,reps:'12–15',load:'RPE 7',pct:'',rpe:ar,note:'Second ham hit. Buffered from Thu DL.'},
-     {name:'Copenhagen plank',tag:'r',sets:3,reps:'20–30s',load:'BW',pct:'',rpe:6,note:'Long lever from Wk 6. Hip dip variation from Wk 7.'},
-     {name:'Hip adduction machine',tag:'r',sets:ph<2?3:2,reps:'12–15',load:ph<2?'Progressive':'RPE 6–7',pct:'',rpe:6,note:'3s eccentric. Progressive load Blk 1–2.'},
-     {name:'Hanging knee raise',tag:'a',sets:2,reps:'12–15',load:'BW',pct:'',rpe:6,note:'Core flexion.'}],
-
-    [{name:'Close-grip bench press',tag:'v',sets:vs[0],reps:vs[1],load:`${cgLo}–${cgHi}`,pct:`${Math.round(vp[0]*100)}–${Math.round(vp[2]*100)}% cg TM`,rpe:rpe[0],note:'TM=170kg. Tricep strength and lockout.'},
-     ...(ph<2?[{name:'DB bench press',tag:'a',sets:as,reps:'10–12',load:'RPE 7–8',pct:'',rpe:ar,note:'Chest hypertrophy. Removed in peaking.'}]:[]),
-     {name:'Good mornings',tag:'a',sets:as,reps:ph===2?'6–8':'8–10',load:'RPE 7',pct:'',rpe:ar,note:'Erector + hamstring. 2 days after Thu DL.'},
-     ...(ph<2?[{name:'Leg press',tag:'a',sets:as,reps:'10–12',load:'RPE 7',pct:'',rpe:ar,note:'Quad volume. No axial load. Removed in peaking.'}]:[]),
-     {name:'Pull-ups',tag:'a',sets:as,reps:'6–8',load:'BW / weighted',pct:'',rpe:ar,note:'Lat width. Add weight when BW easy.'},
-     ...(ph<2?[{name:'Dips',tag:'a',sets:as,reps:'8–10',load:'BW / weighted',pct:'',rpe:ar-0.5,note:'Tricep + chest hypertrophy. Removed in peaking.'}]:[])
+function sess(w,d){
+  const r=RPE[w];
+  const S=[
+    [
+      {n:'Squat — top single',t:'c',s:1,rp:1,l:SQ[w]+'kg',rpe:r,note:'Full 5 min rest before it. This is exposure, not a test. If it feels above target RPE, that is your day — skip the rest.'},
+      {n:'Squat — backoff',t:'s',s:3,rp:3,l:SQB[w]+'kg',rpe:r-1,note:'85% of the single. 3 min between sets.',bo:1},
+      {n:'Barbell row',t:'a',s:3,rp:'8',l:'RPE 7',rpe:7,note:'Overhand, full retraction.'},
+      {n:'45° back extension',t:'a',s:2,rp:'15',l:'BW / plate',rpe:6.5,note:'Erectors. Cheap, keep it in.'},
+      {n:'Lateral raise',t:'b',s:3,rp:'15–20',l:'Light',rpe:7,note:'Side delts. Slow, no swinging. Width is the goal.'},
+      {n:'Standing calf raise',t:'b',s:3,rp:'12–15',l:'RPE 8',rpe:8,note:'Full stretch at bottom, 1s pause at top.'},
+      {n:'Copenhagen plank',t:'r',s:3,rp:'30s',l:'BW',rpe:6,note:'Adductor. Long lever.'}
+    ],
+    [
+      {n:'Bench — top single',t:'c',s:1,rp:1,l:BP[w]+'kg',rpe:r,note:'Wide foot stance. Drive the feet OUT, not down. Every warmup set uses the same stance.'},
+      {n:'Bench — backoff',t:'s',s:3,rp:3,l:BPB[w]+'kg',rpe:r-1,note:'85% of the single. Same stance, same setup.',bo:1},
+      {n:'Chest-supported DB row',t:'a',s:3,rp:'10',l:'RPE 7',rpe:7,note:'Elbows 45°, pause at the top.'},
+      {n:'Tricep pushdown',t:'a',s:3,rp:'12',l:'RPE 7',rpe:7,note:'Lockout work.'},
+      {n:'Incline DB curl',t:'b',s:3,rp:'10–12',l:'RPE 8',rpe:8,note:'Full stretch at the bottom — that is where the growth is. Slow negatives.'},
+      {n:'Lateral raise',t:'b',s:3,rp:'15–20',l:'Light',rpe:7,note:'Second hit of the week.'},
+      {n:'Face pulls',t:'a',s:2,rp:'15',l:'Light',rpe:6,note:'Rear delts + shoulder health.'}
+    ],
+    [
+      {n:'Deadlift — top single',t:'c',s:1,rp:1,l:DL[w]+'kg',rpe:r,note:'FIRST lift of the day, fresh, nothing before it. Dead stop off the floor. This is the whole point of the block.'},
+      {n:'Deadlift — backoff',t:'s',s:2,rp:3,l:DLB[w]+'kg',rpe:r-1,note:'Dead stop every rep. Lose tension, regather, pull. 3–4 min between sets.',bo:1},
+      {n:'Glute-ham raise',t:'a',s:3,rp:'8',l:'BW / assist',rpe:7.5,note:'3s eccentric.'},
+      {n:'Lat pulldown',t:'a',s:3,rp:'10',l:'RPE 7',rpe:7,note:'Lats hold the bar in.'},
+      {n:'45° back extension',t:'a',s:2,rp:'15',l:'BW / plate',rpe:6.5,note:'Second erector hit.'},
+      {n:'Cable curl',t:'b',s:3,rp:'12–15',l:'RPE 8',rpe:8,note:'Constant tension. Squeeze hard at the top.'},
+      {n:'Ab wheel',t:'a',s:2,rp:'12',l:'BW',rpe:7,note:'Anti-extension.'}
+    ],
+    [
+      {n:'Pause squat 2s',t:'v',s:4,rp:4,l:PS[w]+'kg',rpe:7,note:'Dead pause at parallel, no bounce. Moderate — this feeds tissue, it does not test you.'},
+      {n:'Leg press',t:'a',s:3,rp:'12',l:'RPE 7–8',rpe:7.5,note:'Quad volume, no spinal load.'},
+      {n:'Leg curl',t:'a',s:3,rp:'12',l:'RPE 7',rpe:7,note:'Hamstrings.'},
+      {n:'Hip adduction machine',t:'r',s:3,rp:'12–15',l:'Progressive',rpe:7,note:'3s eccentric. Add a little each week.'},
+      {n:'Seated calf raise',t:'b',s:3,rp:'15',l:'RPE 8',rpe:8,note:'Soleus. Different angle to Day 1.'},
+      {n:'Lateral raise',t:'b',s:3,rp:'15–20',l:'Light',rpe:7,note:'Third hit of the week.'},
+      {n:'Copenhagen plank',t:'r',s:3,rp:'30s',l:'BW',rpe:6,note:'Adductor.'}
+    ],
+    [
+      {n:'Bench — paused volume',t:'v',s:5,rp:4,l:BPV[w]+'kg',rpe:7,note:'Wide stance every rep. 20 reps a week to groove the new setup — this is where the technique actually beds in.'},
+      {n:'Close-grip bench',t:'v',s:3,rp:6,l:CG[w]+'kg',rpe:7,note:'Triceps under load.'},
+      {n:'Pull-ups',t:'a',s:3,rp:'8',l:'BW / weighted',rpe:7.5,note:'Add weight when bodyweight gets easy.'},
+      {n:'Incline DB press',t:'a',s:3,rp:'10',l:'RPE 7–8',rpe:7.5,note:'Upper chest.'},
+      {n:'EZ-bar curl',t:'b',s:3,rp:'8–10',l:'RPE 8',rpe:8,note:'Heaviest curl of the week. Strict, no hip drive.'},
+      {n:'Rear delt fly',t:'b',s:3,rp:'15–20',l:'Light',rpe:7,note:'Rounds out the delt. Cheap and worth it.'},
+      {n:'Hanging knee raise',t:'a',s:2,rp:'15',l:'BW',rpe:7,note:'Core flexion.'}
     ]
   ];
-  return D[di];
+  return S[d];
 }
 
-function getVol(ph,wi){return[{0:{sq:28,bp:24,dl:16},1:{sq:32,bp:26,dl:18},2:{sq:35,bp:28,dl:20},3:{sq:38,bp:30,dl:22}},{0:{sq:22,bp:18,dl:14},1:{sq:24,bp:20,dl:16},2:{sq:26,bp:22,dl:18},3:{sq:28,bp:24,dl:20}},{0:{sq:16,bp:14,dl:10},1:{sq:14,bp:12,dl:9},2:{sq:10,bp:10,dl:6},3:{sq:8,bp:8,dl:4}}][ph][wi]}
+const WNOTES=[
+  'Week 1 — easing in. Everything should feel comfortably submaximal. Resist adding weight because it feels light; the progression is the point.',
+  'Week 2 — still building. First week above 220 on squat. Note how it feels versus the mock day.',
+  'Week 3 — halfway. Singles start to have some weight to them. Bench stance should be starting to feel automatic by now.',
+  'Week 4 — if you are dragging, cut the backoff sets this week and keep the singles. Do not cut the singles.',
+  'Week 5 — second heaviest week. 237.5 squat and 252.5 pull, both fresh. These should feel better than the same weights did in the last block.',
+  'Week 6 — the payoff. 242.5 squat and 257.5 pull, fresh, RPE 8.5. Hit these and the diagnosis was right. Then reassess and roll into Phase 2.'
+];
 
-const pN={
-  0:'Accumulation — straight sets. Volume is the priority. Last set hits target RPE. Bar speed = autoregulation. Adductor rehab 3×/week. Wk 4 RPE capped at 8–8.5.',
-  1:'Intensification — top set + backoff. Find your top set at target RPE, drop to 90% for backoffs. Volume moderate. Wk 9 RPE capped at 8.5.',
-  2:'Peaking — every top set with competition intent. Volume drops sharply. Big accessories removed. Wk 13–14: deficit DL and pause squat dropped. Wk 14 uses opener weight (~92%).'
-};
-const sN={
-  0:'Straight sets — work up across all sets. Last set = target RPE.',
-  1:'Top set → backoff — find your top set, then drop to 90% for backoffs.',
-  2:'Top single/double → minimal backoff — every rep with competition intent.'
-};
+const NOTES=[
+  {t:'Nutrition',ic:'N',bg:'#0f2210',tc:'#7ed081',items:[
+    '<strong>Deficit ~600/day.</strong> Same magnitude you just ran for 15 weeks — the problem last block was duration and the taper landing on empty, not the size of the deficit.',
+    '<strong>Protein 200g.</strong> Sit at the top of your usual range for the whole six weeks. This is the single biggest lever on muscle retention while cutting.',
+    '<strong>Expect 0.5–0.65kg per week.</strong> Faster than that and you start paying in lean tissue.',
+    '<strong>Weigh daily, judge weekly.</strong> Take the 7-day average. Single days are water, not fat.',
+    '<strong>Put the carbs around training.</strong> Pre and post session. Being low-carb going into a heavy single is exactly when the deficit shows up in the bar speed.'
+  ]},
+  {t:'Singles',ic:'S',bg:'#0c1e3a',tc:'#8bbfff',items:[
+    '<strong>Never grind a single.</strong> The block is exposure, not testing. Nothing here should be a fight.',
+    '<strong>If the top single lands above target RPE, stop there.</strong> Skip the backoffs that day. You got the exposure, that was the job.',
+    '<strong>5 minutes rest before the single.</strong> Rushing it wastes the whole point.',
+    '<strong>Warmups matter.</strong> Build in singles from about 60% — you want a few reps at speed before the top set, not a slow ramp of triples that fatigues you.'
+  ]},
+  {t:'Deadlift',ic:'D',bg:'#291c03',tc:'#fbbf24',items:[
+    '<strong>Always first lift of the day.</strong> You have failed a max pull twice, both times after squat and bench. This block deliberately gives you the fresh pull you have never tested.',
+    '<strong>Dead stop, always.</strong> Lose tension, regather, pull. Every rep is a fresh floor break — that is the quality that failed you.',
+    '<strong>Week 6 is 257.5.</strong> Just under what you missed on the mock day, but fresh and fed. If it moves well, the taper was the problem and not your strength.',
+    '<strong>Do not add weight because it feels good.</strong> The whole point is repeated successful exposure. Ego lifting here undoes the block.'
+  ]},
+  {t:'Bench — new stance',ic:'B',bg:'#0f2210',tc:'#7ed081',items:[
+    '<strong>Wide stance from set one, week one.</strong> Including every warmup. Consistency is what makes it automatic.',
+    '<strong>Drive the feet out, not down.</strong> The out-cue is what stops the bum lifting — pushing down is what caused the redlight.',
+    '<strong>Day 5 is where it beds in.</strong> 20 paused reps a week at RPE 7 teaches the pattern. Technique changes need volume, not intensity.',
+    '<strong>Film a set every week.</strong> You cannot feel your own bum leaving the bench. Check it from the side.'
+  ]},
+  {t:'Squat',ic:'Q',bg:'#0c1e3a',tc:'#8bbfff',items:[
+    '<strong>This is confidence work.</strong> Your legs did 235 easily — the shakiness was 16 months of not visiting that neighbourhood, not a strength gap.',
+    '<strong>Five exposures above 220 in six weeks,</strong> against three in the last sixteen months. That is the fix.',
+    '<strong>If a single feels genuinely unsafe, rack it.</strong> Re-racking 245 on the mock day was the right call and it would be the right call here.',
+    '<strong>Keep the stance you have.</strong> Do not widen it to feel more stable — that loads the adductor harder at the bottom, not less.'
+  ]},
+  {t:'Bodybuilding work',ic:'C',bg:'#1a1030',tc:'#c084fc',items:[
+    '<strong>Curls 3× a week, laterals 3×, calves 2×.</strong> Enough frequency to matter, low enough fatigue to be free.',
+    '<strong>These go last, always.</strong> If a session runs short on time, these are the first thing to cut — never the singles.',
+    '<strong>Take them close to failure.</strong> Unlike the barbell work, RPE 8–9 on curls and laterals costs you nothing systemically.',
+    '<strong>Retention, not growth.</strong> In a deficit you are holding what you have. The growth comes in Phase 2 — this keeps the tissue stimulated so it is there to build on.'
+  ]},
+  {t:'Recovery',ic:'R',bg:'#081e18',tc:'#4ecfa0',items:[
+    '<strong>Rest: 5 min singles, 3 min backoffs, 60–90s accessories.</strong> Do not rush the heavy work to save time — cut an accessory instead.',
+    '<strong>Sleep is doing more work than usual.</strong> Underfed recovery leans harder on it. 8 hours is not optional this block.',
+    '<strong>No deload built in.</strong> At this volume six weeks straight is fine. If you are flat by week 4, drop the backoffs, keep the singles.',
+    '<strong>Adductor work stays in.</strong> Copenhagen twice a week and the machine once. Six months pain-free with 260 pulls means it is holding — keep it that way.'
+  ]},
+  {t:'After week 6',ic:'→',bg:'#202024',tc:'#8888a0',items:[
+    '<strong>Do not test.</strong> You will be at your lightest and most underfed. Roll straight into Phase 2 and test when you are fed.',
+    '<strong>Reassess at 87–88kg.</strong> Check body composition, see where the singles landed, then build the surplus block.',
+    '<strong>Phase 2 is 5–6 months</strong> at roughly 1kg a month back to 93kg. Volume comes back up hard, lower body gets priority.',
+    '<strong>Realistic target:</strong> 740–760 at 93kg. That is GL 97–99, comfortably past your lifetime best of 88.8.'
+  ]}
+];
 
-// ── State persistence via localStorage ──
-let selW=0,selD=0;
-try{const s=JSON.parse(localStorage.getItem('bridge_v2'));if(s){if(s.w>=0&&s.w<15)selW=s.w;if(s.d>=0&&s.d<5)selD=s.d;}}catch(e){}
-function save(){try{localStorage.setItem('bridge_v2',JSON.stringify({w:selW,d:selD}))}catch(e){}}
+let selW=0,selD=0,view=0;
+try{const s=JSON.parse(localStorage.getItem('p1_v1'));if(s){if(s.w>=0&&s.w<6)selW=s.w;if(s.d>=0&&s.d<5)selD=s.d;if(s.v>=0&&s.v<2)view=s.v}}catch(e){}
+function save(){try{localStorage.setItem('p1_v1',JSON.stringify({w:selW,d:selD,v:view}))}catch(e){}}
 
-function renderBlocks(){
-  document.getElementById('blocks').innerHTML=BGROUPS.map(bg=>
-    `<div class="bwrap"><span class="bbadge ${bg.cl}">${bg.lb}</span>
-    <div class="wscroll">
-      ${bg.wks.map(wi=>{const w=WEEKS[wi];return`<div class="wcard${wi===selW?' sel':''}${w.dl?' deload':''}${w.cap?' capped':''}" onclick="sw(${wi})">
-        <div class="wk-n">${w.n}</div><div class="wk-t">${w.ty}</div>
-        <div class="wk-rpe">${w.rpe}</div><div class="wk-dt">${w.dt}</div>
-        ${w.cap?'<div class="wk-cap">RPE capped</div>':''}
-      </div>`;}).join('')}
-    </div></div>`
-  ).join('');
+function setView(v){
+  view=v;save();
+  document.getElementById('nav0').className='navbtn'+(v===0?' act':'');
+  document.getElementById('nav1').className='navbtn'+(v===1?' act':'');
+  document.getElementById('view0').style.display=v===0?'block':'none';
+  document.getElementById('view1').style.display=v===1?'block':'none';
+  if(v===1)renderNotes();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function renderWeeks(){
+  document.getElementById('weeks').innerHTML=[0,1,2,3,4,5].map(i=>
+    `<div class="wcard${i===selW?' sel':''}" onclick="sw(${i})">
+      <div class="wn">Week</div>
+      <div class="wt">${i+1}</div>
+      <div class="wr">RPE ${RPE[i]}</div>
+    </div>`).join('');
 }
 
 function renderMain(){
-  const w=WEEKS[selW],el=document.getElementById('main');
-  if(w.dl){
-    const it=w.taper;
-    el.innerHTML=`<div class="dlcard">
-      <div class="dltitle">${it?'Wk 15 — Taper / Meet prep':'Deload week'}</div>
-      <div class="dlsub">${it?'Fatigue cleared. Execute openers. Compete Sun 26 Jul.':'Flush fatigue. Everything should feel easy.'}</div>
-      <ul class="dllist">${it
-        ?`<li><strong>Mon</strong> — Squat opener ${kg('sq',0.92)}kg · 1×1 · RPE 7</li>
-           <li><strong>Tue</strong> — Bench opener ${kg('bp',0.92)}kg · 1×1 · RPE 7</li>
-           <li><strong>Wed</strong> — Rest</li>
-           <li><strong>Thu</strong> — Deadlift opener ${kg('dl',0.92)}kg · 1×1 · RPE 7</li>
-           <li><strong>Fri–Sun</strong> — Complete rest only</li>
-           <li>If any opener feels above RPE 7.5 — review second attempt weight</li>
-           <li>Carb load Thu–Sat · 8–9 hrs sleep every night</li>
-           <li>Copenhagen plank 2×20s daily until Thu</li>`
-        :`<li><strong>Squat</strong> ${kg('sq',.60)}kg · 3×5 · RPE 6 max</li>
-           <li><strong>Bench</strong> ${kg('bp',.60)}kg · 3×5 · RPE 6 max</li>
-           <li><strong>Deadlift</strong> ${kg('dl',.60)}kg · 2×4 · RPE 6 max</li>
-           <li>Pause squat + deficit DL: 2×3 @55% of own TM, or skip</li>
-           <li>GHR 2×8 BW · Back ext 2×15 BW</li>
-           <li>All accessories: 2 sets, lighter load</li>
-           <li>Copenhagen plank 2×20s daily</li>
-           <li>Sleep, calories, soft tissue work</li>`}
-      </ul></div>`;
-    return;
-  }
-  const vol=getVol(w.ph,w.wi),mx=Math.max(vol.sq,vol.bp,vol.dl);
-  let h=`<div class="pnote">${pN[w.ph]}${w.cap?` <strong style="color:var(--amber-text)">Overreach RPE capped — adductor precaution.</strong>`:''}</div>`;
-  h+=`<div class="vol-wrap"><div class="vol-title">Weekly working sets — competition lifts</div>
-    ${[['sq','Squat','#5b9ef9'],['bp','Bench','#4caf50'],['dl','Deadlift','#f0a500']].map(([k,n,c])=>
-      `<div class="vol-row"><span class="vol-name">${n}</span><div class="vol-bg"><div class="vol-fill" style="width:${Math.round(vol[k]/mx*100)}%;background:${c}"></div></div><span class="vol-val">${vol[k]}</span></div>`
-    ).join('')}</div>`;
-  h+=`<div class="dtabs">${DAYS.map((d,i)=>`<button class="dtab${i===selD?' act':''}" onclick="sd(${i})">${d.n}</button>`).join('')}</div>`;
-  const day=DAYS[selD],sess=buildSess(w.ph,w.wi,selD);
+  const d=DAYS[selD],s=sess(selW,selD);
+  let h=`<div class="pnote">${WNOTES[selW]}</div>`;
+  h+=`<div class="dtabs">${DAYS.map((x,i)=>`<button class="dtab${i===selD?' act':''}" onclick="sd(${i})">${x.n}</button>`).join('')}</div>`;
   h+=`<div class="scard"><div class="shead">
-    <div class="sic" style="background:${day.bg};color:${day.tc}">${day.ic}</div>
-    <div><div class="sname">${day.n}: ${day.name}</div><div class="ssub">${w.n} · ${w.dt} · ${w.ty} · ${w.rpe}</div></div>
+    <div class="sic" style="background:${d.bg};color:${d.tc}">${d.ic}</div>
+    <div><div class="sname">${d.n}: ${d.name}</div><div class="ssub">Week ${selW+1} · target RPE ${RPE[selW]}</div></div>
   </div>`;
-  const tagCls={c:'tc',v:'tv',a:'ta',r:'tr',s:'ts'};
-  const tagLbl={c:'Comp',v:'Variation',a:'Accessory',r:'Rehab',s:'Backoff'};
-  sess.forEach(ex=>{
-    h+=`<div class="exrow${ex.bo?' bo':''}">
+  const tcl={c:'tc',v:'tv',a:'ta',r:'tr',b:'tb',s:'ts'};
+  const tlb={c:'Comp',v:'Variation',a:'Accessory',r:'Rehab',b:'Physique',s:'Backoff'};
+  s.forEach(e=>{
+    h+=`<div class="exrow${e.bo?' bo':''}">
       <div class="extop">
-        <div class="exname${ex.bo?' dim':''}">${ex.name}</div>
-        <div class="extags">
-          <span class="tag ${tagCls[ex.tag]||'ta'}">${tagLbl[ex.tag]||''}</span>
-          ${ex.rpe?`<span class="rpetag ${rC(ex.rpe)}">${ex.rpe}</span>`:''}
-        </div>
+        <div class="exname${e.bo?' dim':''}">${e.n}</div>
+        <div class="extags"><span class="tag ${tcl[e.t]}">${tlb[e.t]}</span><span class="rp ${rc(e.rpe)}">${e.rpe}</span></div>
       </div>
       <div class="exdet">
-        <div class="exd"><div class="exdl">Sets</div><div class="exdv">${ex.sets}</div></div>
-        <div class="exd"><div class="exdl">Reps</div><div class="exdv">${ex.reps}</div></div>
-        <div class="exd"><div class="exdl">Load</div><div class="exdv">${ex.load}</div><div class="exdp">${ex.pct||''}</div></div>
+        <div class="exd"><div class="exdl">Sets</div><div class="exdv">${e.s}</div></div>
+        <div class="exd"><div class="exdl">Reps</div><div class="exdv">${e.rp}</div></div>
+        <div class="exd"><div class="exdl">Load</div><div class="exdv${e.t==='c'||e.t==='v'||e.t==='s'?' big':''}">${e.l}</div></div>
       </div>
-      ${ex.note?`<div class="exnote">${ex.note}</div>`:''}
+      <div class="exnote">${e.note}</div>
     </div>`;
   });
-  h+=`</div><div class="snote">${sN[w.ph]}</div>`;
-  el.innerHTML=h;
+  h+=`</div>`;
+  document.getElementById('main').innerHTML=h;
 }
 
-function sw(i){
-  selW=i;selD=0;save();
-  renderBlocks();renderMain();
-  window.scrollTo({top:document.getElementById('blocks').offsetTop-70,behavior:'smooth'});
+function renderNotes(){
+  document.getElementById('notes').innerHTML=NOTES.map(n=>
+    `<div class="ncard">
+      <div class="nhead"><div class="nic" style="background:${n.bg};color:${n.tc}">${n.ic}</div><div class="ntitle">${n.t}</div></div>
+      <div class="nbody">${n.items.map(i=>`<div class="nitem">${i}</div>`).join('')}</div>
+    </div>`).join('');
 }
+
+function sw(i){selW=i;save();renderWeeks();renderMain()}
 function sd(i){selD=i;save();renderMain()}
 
-renderBlocks();renderMain();
+renderWeeks();renderMain();setView(view);
 </script>
 </body>
 </html>
