@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<title>Phase 1</title>
+<title>Phase 2</title>
 <style>
 :root{
   --bg:#0d0d0f;--bg2:#17171a;--bg3:#202024;--bg4:#2a2a2f;
@@ -13,7 +13,7 @@
   --text:#f0f0f3;--text2:#8e8e9e;--text3:#4a4a58;
   --blue:#5b9ef9;--blue-bg:#0c1e3a;--blue-dim:#0f2040;--blue-text:#8bbfff;
   --green-bg:#0f2210;--green-text:#7ed081;
-  --amber:#f0a500;--amber-bg:#291c03;--amber-text:#fbbf24;
+  --amber-bg:#291c03;--amber-text:#fbbf24;
   --red-bg:#280c0c;--red-text:#f87171;
   --pink-bg:#220d1a;--pink-text:#f0a0c8;
   --gray-bg:#202024;--gray-text:#7878a0;
@@ -24,72 +24,58 @@
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html,body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Segoe UI',sans-serif;font-size:16px;line-height:1.5;min-height:100vh}
 body{padding:0 0 120px}
-
 .hdr{background:var(--bg2);border-bottom:1px solid var(--border);padding:16px 18px 14px;position:sticky;top:0;z-index:100}
 .hdr-row{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
 .title{font-size:20px;font-weight:800;letter-spacing:-0.5px}
 .sub{font-size:13px;color:var(--text2);margin-top:3px}
-.pill{display:inline-block;background:var(--purple-bg);color:var(--purple-text);font-size:12px;font-weight:700;padding:4px 11px;border-radius:20px;margin-top:8px}
+.pill{display:inline-block;background:var(--green-bg);color:var(--green-text);font-size:12px;font-weight:700;padding:4px 11px;border-radius:20px;margin-top:8px}
 .hdr-r{text-align:right;flex-shrink:0}
 .hr-lbl{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:0.6px;margin-bottom:3px}
-.hr-val{font-size:22px;font-weight:800;color:var(--purple-text);letter-spacing:-0.5px}
+.hr-val{font-size:22px;font-weight:800;color:var(--green-text);letter-spacing:-0.5px}
 .hr-sub{font-size:11px;color:var(--text2);margin-top:1px}
-
 .nav{display:flex;gap:8px;padding:14px 18px 0}
 .navbtn{flex:1;font-size:14px;padding:9px 0;border-radius:24px;border:1px solid var(--border2);background:transparent;color:var(--text2);font-weight:600;cursor:pointer;transition:all .15s}
 .navbtn.act{background:var(--blue-dim);color:var(--blue-text);border-color:var(--blue)}
-
 .tmgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:16px 18px}
 .tmc{background:var(--bg2);border-radius:var(--rsm);padding:13px 14px;border:1px solid var(--border)}
 .tml{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:0.6px;margin-bottom:5px;font-weight:600}
 .tmv{font-size:24px;font-weight:800;letter-spacing:-0.6px}
 .tmu{font-size:13px;color:var(--text2);margin-left:2px;font-weight:400}
-.tmd{border-top:1px solid var(--border);margin-top:10px;padding-top:8px}
-.tmsl{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:3px}
-.tmsv{font-size:16px;font-weight:700;color:var(--text2);letter-spacing:-0.3px}
-
 .slbl{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:0.7px;font-weight:700;padding:0 18px 8px}
 .sched{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;padding:0 18px 20px}
 .sday{border-radius:var(--rsm);padding:9px 4px;text-align:center}
 .sdd{font-size:10px;font-weight:700;margin-bottom:4px;opacity:.75}
 .sdn{font-size:11px;font-weight:700;line-height:1.3}
 .sds{font-size:9px;margin-top:3px;opacity:.6;line-height:1.3}
-
 .wwrap{padding:0 18px;margin-bottom:12px}
 .wscroll{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .wscroll::-webkit-scrollbar{display:none}
-.wcard{flex-shrink:0;width:96px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--rsm);padding:11px 12px;cursor:pointer;transition:all .15s}
+.wcard{flex-shrink:0;width:100px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--rsm);padding:11px 12px;cursor:pointer;transition:all .15s}
 .wcard.sel{border-color:var(--blue);background:var(--blue-dim)}
 .wn{font-size:11px;color:var(--text3);font-weight:700}
 .wt{font-size:15px;font-weight:800;margin-top:3px;letter-spacing:-0.3px}
 .wr{font-size:11px;color:var(--text2);margin-top:3px}
-
 .sarea{padding:0 18px}
 .dtabs{display:flex;gap:8px;margin-bottom:16px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px}
 .dtabs::-webkit-scrollbar{display:none}
-.dtab{flex-shrink:0;font-size:14px;padding:9px 18px;border-radius:24px;border:1px solid var(--border2);background:transparent;color:var(--text2);cursor:pointer;font-weight:600;transition:all .15s}
+.dtab{flex-shrink:0;font-size:14px;padding:9px 16px;border-radius:24px;border:1px solid var(--border2);background:transparent;color:var(--text2);cursor:pointer;font-weight:600;transition:all .15s}
 .dtab.act{background:var(--blue-dim);color:var(--blue-text);border-color:var(--blue)}
-
 .scard{background:var(--bg2);border-radius:var(--r);border:1px solid var(--border);overflow:hidden;margin-bottom:14px}
 .shead{display:flex;align-items:center;gap:12px;padding:15px 17px;border-bottom:1px solid var(--border)}
 .sic{width:42px;height:42px;border-radius:var(--rsm);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0}
 .sname{font-size:16px;font-weight:800;letter-spacing:-0.3px}
 .ssub{font-size:12px;color:var(--text2);margin-top:3px}
-
 .exrow{padding:15px 17px;border-bottom:1px solid var(--border)}
 .exrow:last-child{border-bottom:none}
-.exrow.bo{background:rgba(255,255,255,.02);padding-left:28px}
 .extop{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:11px}
 .exname{font-size:15px;font-weight:700;line-height:1.3;flex:1;letter-spacing:-0.1px}
-.exname.dim{font-weight:400;color:var(--text2);font-size:14px}
 .extags{display:flex;gap:5px;align-items:center;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end}
 .tag{font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px}
 .tc{background:var(--blue-bg);color:var(--blue-text)}
 .tv{background:var(--pink-bg);color:var(--pink-text)}
 .ta{background:var(--gray-bg);color:var(--gray-text)}
-.tr{background:var(--teal-bg);color:var(--teal-text)}
 .tb{background:var(--purple-bg);color:var(--purple-text)}
-.ts{background:var(--bg4);color:var(--text3)}
+.tr{background:var(--teal-bg);color:var(--teal-text)}
 .rp{font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px}
 .rlo{background:var(--green-bg);color:var(--green-text)}
 .rmd{background:var(--amber-bg);color:var(--amber-text)}
@@ -100,9 +86,7 @@ body{padding:0 0 120px}
 .exdv{font-size:18px;font-weight:800;line-height:1.2;letter-spacing:-0.4px}
 .exdv.big{color:var(--blue-text)}
 .exnote{font-size:13px;color:var(--text2);line-height:1.65}
-
 .pnote{background:var(--bg3);padding:13px 16px;font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:16px;border-left:3px solid var(--blue);border-radius:0 var(--rsm) var(--rsm) 0}
-
 .ncard{background:var(--bg2);border-radius:var(--r);border:1px solid var(--border);margin-bottom:12px;overflow:hidden}
 .nhead{padding:14px 17px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
 .nic{width:34px;height:34px;border-radius:var(--rsm);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;flex-shrink:0}
@@ -118,14 +102,14 @@ body{padding:0 0 120px}
 <div class="hdr">
   <div class="hdr-row">
     <div>
-      <div class="title">Phase 1</div>
-      <div class="sub">6-week deficit block · retention + singles</div>
-      <div class="pill" id="pill">91 → 87.5kg</div>
+      <div class="title">Phase 2</div>
+      <div class="sub">Volume block · small surplus · 4–6 weeks</div>
+      <div class="pill">90kg · building</div>
     </div>
     <div class="hdr-r">
-      <div class="hr-lbl">Protein</div>
-      <div class="hr-val">200<span style="font-size:13px;color:var(--text2)">g</span></div>
-      <div class="hr-sub">~600 deficit</div>
+      <div class="hr-lbl">Sets/week</div>
+      <div class="hr-val" id="setcount">14</div>
+      <div class="hr-sub">per muscle group</div>
     </div>
   </div>
 </div>
@@ -137,21 +121,9 @@ body{padding:0 0 120px}
 
 <div id="view0">
 <div class="tmgrid">
-  <div class="tmc">
-    <div class="tml">Squat TM</div>
-    <div class="tmv">245<span class="tmu">kg</span></div>
-    <div class="tmd"><div class="tmsl">Pause squat</div><div class="tmsv">215<span class="tmu">kg</span></div></div>
-  </div>
-  <div class="tmc">
-    <div class="tml">Bench TM</div>
-    <div class="tmv">185<span class="tmu">kg</span></div>
-    <div class="tmd"><div class="tmsl">Close-grip</div><div class="tmsv">170<span class="tmu">kg</span></div></div>
-  </div>
-  <div class="tmc">
-    <div class="tml">Deadlift TM</div>
-    <div class="tmv">270<span class="tmu">kg</span></div>
-    <div class="tmd"><div class="tmsl">Est. fresh max</div><div class="tmsv">275<span class="tmu">kg</span></div></div>
-  </div>
+  <div class="tmc"><div class="tml">Squat TM</div><div class="tmv">245<span class="tmu">kg</span></div></div>
+  <div class="tmc"><div class="tml">Bench TM</div><div class="tmv">185<span class="tmu">kg</span></div></div>
+  <div class="tmc"><div class="tml">Deadlift TM</div><div class="tmv">270<span class="tmu">kg</span></div></div>
 </div>
 
 <div class="slbl">Weekly schedule</div>
@@ -169,88 +141,80 @@ body{padding:0 0 120px}
 
 <script>
 const SCHED=[
-  {d:'Mon',n:'Day 1',s:'Squat',bg:'#0c1e3a',tc:'#8bbfff'},
-  {d:'Tue',n:'Day 2',s:'Bench',bg:'#0f2210',tc:'#7ed081'},
+  {d:'Mon',n:'Day 1',s:'Squat hvy',bg:'#0c1e3a',tc:'#8bbfff'},
+  {d:'Tue',n:'Day 2',s:'Bench hvy',bg:'#0f2210',tc:'#7ed081'},
   {d:'Wed',n:'Rest',s:'Recovery',bg:'#17171a',tc:'#4a4a58'},
   {d:'Thu',n:'Day 3',s:'Deadlift',bg:'#291c03',tc:'#fbbf24'},
-  {d:'Fri',n:'Day 4',s:'Sq volume',bg:'#220d1a',tc:'#f0a0c8'},
-  {d:'Sat',n:'Day 5',s:'Bp volume',bg:'#1a1a1e',tc:'#7878a0'},
+  {d:'Fri',n:'Day 4',s:'Squat vol',bg:'#220d1a',tc:'#f0a0c8'},
+  {d:'Sat',n:'Day 5',s:'Bench vol',bg:'#1a1a1e',tc:'#7878a0'},
   {d:'Sun',n:'Rest',s:'Recovery',bg:'#17171a',tc:'#4a4a58'}
 ];
 document.getElementById('sched').innerHTML=SCHED.map(s=>
-  `<div class="sday" style="background:${s.bg}">
-    <div class="sdd" style="color:${s.tc}">${s.d}</div>
-    <div class="sdn" style="color:${s.tc}">${s.n}</div>
-    <div class="sds" style="color:${s.tc}">${s.s}</div>
-  </div>`).join('');
+  `<div class="sday" style="background:${s.bg}"><div class="sdd" style="color:${s.tc}">${s.d}</div><div class="sdn" style="color:${s.tc}">${s.n}</div><div class="sds" style="color:${s.tc}">${s.s}</div></div>`).join('');
 
-const RPE=[6.5,7,7.5,7.5,8,8.5];
-const SQ=[215,222.5,227.5,232.5,237.5,242.5];
-const SQB=[182.5,190,192.5,197.5,202.5,205];
-const BP=[150,157.5,162.5,167.5,172.5,177.5];
-const BPB=[127.5,135,137.5,142.5,147.5,150];
-const DL=[230,237.5,242.5,247.5,252.5,257.5];
-const DLB=[195,202.5,205,210,215,220];
-const PS=[150,155,160,162.5,165,170];
-const BPV=[120,122.5,125,127.5,130,132.5];
-const CG=[105,107.5,110,112.5,115,117.5];
+const SQH=[180,185,190,195,200,205];
+const SQV=[155,160,165,167.5,172.5,175];
+const BPH=[135,140,142.5,145,150,152.5];
+const BPV=[115,117.5,120,122.5,125,127.5];
+const DLH=[195,200,205,210,215,220];
+const DLT=[175,175,177.5,180,182.5,185];
+const MRPE=[6.5,7,7,7.5,7.5,8];
+const ASETS=[3,3,4,4,5,5];
+const SETCOUNT=[14,15,17,18,20,21];
 
 const DAYS=[
-  {n:'Day 1',name:'Squat',ic:'S1',bg:'#0c1e3a',tc:'#8bbfff'},
-  {n:'Day 2',name:'Bench',ic:'B1',bg:'#0f2210',tc:'#7ed081'},
-  {n:'Day 3',name:'Deadlift',ic:'D1',bg:'#291c03',tc:'#fbbf24'},
-  {n:'Day 4',name:'Squat volume + lower',ic:'S2',bg:'#220d1a',tc:'#f0a0c8'},
-  {n:'Day 5',name:'Bench volume + upper',ic:'B2',bg:'#1a1a1e',tc:'#7878a0'}
+  {n:'Day 1',name:'Squat heavy · quads · arms',ic:'S1',bg:'#0c1e3a',tc:'#8bbfff'},
+  {n:'Day 2',name:'Bench heavy · overhead · delts',ic:'B1',bg:'#0f2210',tc:'#7ed081'},
+  {n:'Day 3',name:'Deadlift heavy · posterior · back',ic:'D1',bg:'#291c03',tc:'#fbbf24'},
+  {n:'Day 4',name:'Squat volume · hacks · arms',ic:'S2',bg:'#220d1a',tc:'#f0a0c8'},
+  {n:'Day 5',name:'Bench volume · DL technique',ic:'B2',bg:'#1a1a1e',tc:'#7878a0'}
 ];
 
 function rc(r){if(r>=9)return'rhi';if(r>=8)return'rmd';return'rlo'}
 
 function sess(w,d){
-  const r=RPE[w];
+  const a=ASETS[w],r=MRPE[w];
   const S=[
     [
-      {n:'Squat — top single',t:'c',s:1,rp:1,l:SQ[w]+'kg',rpe:r,note:'Full 5 min rest before it. This is exposure, not a test. If it feels above target RPE, that is your day — skip the rest.'},
-      {n:'Squat — backoff',t:'s',s:3,rp:3,l:SQB[w]+'kg',rpe:r-1,note:'85% of the single. 3 min between sets.',bo:1},
-      {n:'Barbell row',t:'a',s:3,rp:'8',l:'RPE 7',rpe:7,note:'Overhand, full retraction.'},
-      {n:'45° back extension',t:'a',s:2,rp:'15',l:'BW / plate',rpe:6.5,note:'Erectors. Cheap, keep it in.'},
-      {n:'Lateral raise',t:'b',s:3,rp:'15–20',l:'Light',rpe:7,note:'Side delts. Slow, no swinging. Width is the goal.'},
-      {n:'Standing calf raise',t:'b',s:3,rp:'12–15',l:'RPE 8',rpe:8,note:'Full stretch at bottom, 1s pause at top.'},
-      {n:'Copenhagen plank',t:'r',s:3,rp:'30s',l:'BW',rpe:6,note:'Adductor. Long lever.'}
+      {n:'Competition squat',t:'c',s:4,rp:5,l:SQH[w]+'kg',rpe:r,note:'3–4 min rest. Load progresses weekly — the reps stay the same. Bar speed should stay crisp on every set.'},
+      {n:'Hack squat',t:'a',s:a,rp:'8–10',l:'RPE 8',rpe:8,note:'Main quad builder. Full depth, controlled descent. Knees liked this better than leg press — keep it that way.'},
+      {n:'Leg curl',t:'a',s:a,rp:'10–12',l:'RPE 8',rpe:8,note:'3s eccentric. Hamstrings need direct work in a mass phase.'},
+      {n:'EZ-bar curl',t:'b',s:a,rp:'8–10',l:'RPE 8–9',rpe:8.5,note:'Heaviest curl of the week. Strict, no hip drive.'},
+      {n:'Incline DB curl',t:'b',s:a,rp:'10–12',l:'RPE 9',rpe:9,note:'Full stretch at the bottom. Take these near failure — they cost nothing systemically.'},
+      {n:'Ab wheel',t:'a',s:2,rp:'12–15',l:'BW',rpe:7,note:'Anti-extension.'}
     ],
     [
-      {n:'Bench — top single',t:'c',s:1,rp:1,l:BP[w]+'kg',rpe:r,note:'Wide foot stance. Drive the feet OUT, not down. Every warmup set uses the same stance.'},
-      {n:'Bench — backoff',t:'s',s:3,rp:3,l:BPB[w]+'kg',rpe:r-1,note:'85% of the single. Same stance, same setup.',bo:1},
-      {n:'Chest-supported DB row',t:'a',s:3,rp:'10',l:'RPE 7',rpe:7,note:'Elbows 45°, pause at the top.'},
-      {n:'Tricep pushdown',t:'a',s:3,rp:'12',l:'RPE 7',rpe:7,note:'Lockout work.'},
-      {n:'Incline DB curl',t:'b',s:3,rp:'10–12',l:'RPE 8',rpe:8,note:'Full stretch at the bottom — that is where the growth is. Slow negatives.'},
-      {n:'Lateral raise',t:'b',s:3,rp:'15–20',l:'Light',rpe:7,note:'Second hit of the week.'},
-      {n:'Face pulls',t:'a',s:2,rp:'15',l:'Light',rpe:6,note:'Rear delts + shoulder health.'}
+      {n:'Competition bench',t:'c',s:4,rp:5,l:BPH[w]+'kg',rpe:r,note:'Wide foot stance, drive out not down. Same setup you grooved in Phase 1.'},
+      {n:'Overhead press (barbell)',t:'v',s:a,rp:'6–8',l:'RPE 8',rpe:8,note:'Primary presser. Strict, no leg drive. Swap to machine only if short on time or the shoulder is cranky.'},
+      {n:'Chest-supported DB row',t:'a',s:a,rp:'10–12',l:'RPE 8',rpe:8,note:'Elbows 45°, pause at the top.'},
+      {n:'Lateral raise',t:'b',s:a,rp:'15–20',l:'RPE 9',rpe:9,note:'Slow, no swing. Take to failure.'},
+      {n:'Face pulls',t:'r',s:3,rp:'15–20',l:'Light',rpe:7,note:'Rear delt and cuff. Different job to the Z-press.'},
+      {n:'Z-twist (Mansour)',t:'r',s:3,rp:'12–15',l:'Very light',rpe:6,note:'External rotation under load. Slow and deliberate — this is not a strength exercise.'},
+      {n:'Skullcrusher',t:'a',s:a,rp:'10–12',l:'RPE 8',rpe:8,note:'Mid-range tricep. Feeds the bench.'}
     ],
     [
-      {n:'Deadlift — top single',t:'c',s:1,rp:1,l:DL[w]+'kg',rpe:r,note:'FIRST lift of the day, fresh, nothing before it. Dead stop off the floor. This is the whole point of the block.'},
-      {n:'Deadlift — backoff',t:'s',s:2,rp:3,l:DLB[w]+'kg',rpe:r-1,note:'Dead stop every rep. Lose tension, regather, pull. 3–4 min between sets.',bo:1},
-      {n:'Glute-ham raise',t:'a',s:3,rp:'8',l:'BW / assist',rpe:7.5,note:'3s eccentric.'},
-      {n:'Lat pulldown',t:'a',s:3,rp:'10',l:'RPE 7',rpe:7,note:'Lats hold the bar in.'},
-      {n:'45° back extension',t:'a',s:2,rp:'15',l:'BW / plate',rpe:6.5,note:'Second erector hit.'},
-      {n:'Cable curl',t:'b',s:3,rp:'12–15',l:'RPE 8',rpe:8,note:'Constant tension. Squeeze hard at the top.'},
-      {n:'Ab wheel',t:'a',s:2,rp:'12',l:'BW',rpe:7,note:'Anti-extension.'}
+      {n:'Competition deadlift',t:'c',s:4,rp:5,l:DLH[w]+'kg',rpe:r,note:'First lift of the day, fresh. Dead stop every rep — lose tension, regather, pull. Technique consistency is the priority.'},
+      {n:'Romanian deadlift',t:'a',s:a,rp:'8–10',l:'RPE 8',rpe:8,note:'Full stretch, controlled. Hamstring and erector mass.'},
+      {n:'Lat pulldown',t:'a',s:a,rp:'10–12',l:'RPE 8',rpe:8,note:'Lats hold the bar in on a heavy pull.'},
+      {n:'Barbell row',t:'a',s:a,rp:'8–10',l:'RPE 8',rpe:8,note:'Upper back thickness. Overhand, full retraction.'},
+      {n:'45° back extension',t:'a',s:3,rp:'12–15',l:'BW / plate',rpe:7,note:'Erectors. Cheap and worth keeping.'},
+      {n:'Cable curl',t:'b',s:a,rp:'12–15',l:'RPE 9',rpe:9,note:'Constant tension. Squeeze at the top.'}
     ],
     [
-      {n:'Pause squat 2s',t:'v',s:4,rp:4,l:PS[w]+'kg',rpe:7,note:'Dead pause at parallel, no bounce. Moderate — this feeds tissue, it does not test you.'},
-      {n:'Leg press',t:'a',s:3,rp:'12',l:'RPE 7–8',rpe:7.5,note:'Quad volume, no spinal load.'},
-      {n:'Leg curl',t:'a',s:3,rp:'12',l:'RPE 7',rpe:7,note:'Hamstrings.'},
-      {n:'Hip adduction machine',t:'r',s:3,rp:'12–15',l:'Progressive',rpe:7,note:'3s eccentric. Add a little each week.'},
-      {n:'Seated calf raise',t:'b',s:3,rp:'15',l:'RPE 8',rpe:8,note:'Soleus. Different angle to Day 1.'},
-      {n:'Lateral raise',t:'b',s:3,rp:'15–20',l:'Light',rpe:7,note:'Third hit of the week.'},
-      {n:'Copenhagen plank',t:'r',s:3,rp:'30s',l:'BW',rpe:6,note:'Adductor.'}
+      {n:'Competition squat — volume',t:'v',s:4,rp:8,l:SQV[w]+'kg',rpe:7,note:'Same groove, more reps. RPE 7 ceiling — this builds tissue, it does not test you.'},
+      {n:'Hack squat',t:'a',s:a,rp:'12–15',l:'RPE 8',rpe:8,note:'Higher reps than Monday. Quad volume is the main driver of leg size.'},
+      {n:'Leg curl',t:'a',s:a,rp:'12–15',l:'RPE 8–9',rpe:8.5,note:'Second hamstring hit.'},
+      {n:'Lateral raise',t:'b',s:a,rp:'15–20',l:'RPE 9',rpe:9,note:'Second delt hit of the week.'},
+      {n:'Preacher / cable curl',t:'b',s:a,rp:'12',l:'RPE 9',rpe:9,note:'Third bicep session. Different angle to Monday.'},
+      {n:'Standing calf raise',t:'b',s:3,rp:'12–15',l:'RPE 9',rpe:9,note:'Full stretch, 1s pause at the top.'}
     ],
     [
-      {n:'Bench — paused volume',t:'v',s:5,rp:4,l:BPV[w]+'kg',rpe:7,note:'Wide stance every rep. 20 reps a week to groove the new setup — this is where the technique actually beds in.'},
-      {n:'Close-grip bench',t:'v',s:3,rp:6,l:CG[w]+'kg',rpe:7,note:'Triceps under load.'},
-      {n:'Pull-ups',t:'a',s:3,rp:'8',l:'BW / weighted',rpe:7.5,note:'Add weight when bodyweight gets easy.'},
-      {n:'Incline DB press',t:'a',s:3,rp:'10',l:'RPE 7–8',rpe:7.5,note:'Upper chest.'},
-      {n:'EZ-bar curl',t:'b',s:3,rp:'8–10',l:'RPE 8',rpe:8,note:'Heaviest curl of the week. Strict, no hip drive.'},
-      {n:'Rear delt fly',t:'b',s:3,rp:'15–20',l:'Light',rpe:7,note:'Rounds out the delt. Cheap and worth it.'},
+      {n:'Competition bench — volume',t:'v',s:4,rp:8,l:BPV[w]+'kg',rpe:7,note:'Wide stance every rep. RPE 7 ceiling.'},
+      {n:'Deadlift — technique',t:'v',s:5,rp:3,l:DLT[w]+'kg',rpe:6,note:'RPE 6 CEILING — do not let this creep. Dead stop, full reset between reps. This is groove work, not a second heavy day.'},
+      {n:'Incline DB press',t:'a',s:a,rp:'10–12',l:'RPE 8',rpe:8,note:'Upper chest.'},
+      {n:'Rear delt fly',t:'b',s:a,rp:'15–20',l:'RPE 9',rpe:9,note:'Second rear delt hit.'},
+      {n:'Lateral raise',t:'b',s:3,rp:'15–20',l:'RPE 9',rpe:9,note:'Third delt hit.'},
+      {n:'Tricep pushdown',t:'a',s:a,rp:'12–15',l:'RPE 8',rpe:8,note:'Lockout work.'},
       {n:'Hanging knee raise',t:'a',s:2,rp:'15',l:'BW',rpe:7,note:'Core flexion.'}
     ]
   ];
@@ -258,69 +222,66 @@ function sess(w,d){
 }
 
 const WNOTES=[
-  'Week 1 — easing in. Everything should feel comfortably submaximal. Resist adding weight because it feels light; the progression is the point.',
-  'Week 2 — still building. First week above 220 on squat. Note how it feels versus the mock day.',
-  'Week 3 — halfway. Singles start to have some weight to them. Bench stance should be starting to feel automatic by now.',
-  'Week 4 — if you are dragging, cut the backoff sets this week and keep the singles. Do not cut the singles.',
-  'Week 5 — second heaviest week. 237.5 squat and 252.5 pull, both fresh. These should feel better than the same weights did in the last block.',
-  'Week 6 — the payoff. 242.5 squat and 257.5 pull, fresh, RPE 8.5. Hit these and the diagnosis was right. Then reassess and roll into Phase 2.'
+  'Week 1 — deliberately below your ceiling. It should feel easy. Resist adding sets or load; the ramp is the point and week 1 is the baseline we measure everything against.',
+  'Week 2 — same set count, load up slightly. Still comfortable. Note how recovery feels between sessions now you are fed.',
+  'Week 3 — accessories go to 4 sets. First real jump in volume. Sessions get longer; keep the rest periods honest on the main lifts.',
+  'Week 4 — earliest point a deload might be needed. If you are sleeping badly, joints ache, or bar speed drops on the main lifts, that is the signal. Note the week number.',
+  'Week 5 — accessories go to 5 sets. This is high volume. Most likely week for fatigue to catch up. Watch the knees especially.',
+  'Week 6 — top of the ramp. If you get through this feeling good, you have found a genuinely high ceiling and we deload after it by choice, not necessity.'
 ];
 
 const NOTES=[
-  {t:'Nutrition',ic:'N',bg:'#0f2210',tc:'#7ed081',items:[
-    '<strong>Deficit ~600/day.</strong> Same magnitude you just ran for 15 weeks — the problem last block was duration and the taper landing on empty, not the size of the deficit.',
-    '<strong>Protein 200g.</strong> Sit at the top of your usual range for the whole six weeks. This is the single biggest lever on muscle retention while cutting.',
-    '<strong>Expect 0.5–0.65kg per week.</strong> Faster than that and you start paying in lean tissue.',
-    '<strong>Weigh daily, judge weekly.</strong> Take the 7-day average. Single days are water, not fat.',
-    '<strong>Put the carbs around training.</strong> Pre and post session. Being low-carb going into a heavy single is exactly when the deficit shows up in the bar speed.'
+  {t:'How this block works',ic:'1',bg:'#0c1e3a',tc:'#8bbfff',items:[
+    '<strong>Volume ramps, load ramps, reps stay fixed.</strong> Main lifts add weight weekly at the same sets and reps. Accessories add sets every two weeks.',
+    '<strong>Week 1 will feel too easy.</strong> That is intentional. Starting below your ceiling means you have somewhere to progress to and a clean read on where fatigue catches you.',
+    '<strong>The deload is not pre-scheduled.</strong> We are using this block to find out how much volume you can actually recover from in a surplus. Whenever fatigue catches you is the answer, and that number becomes the reference for every future block.',
+    '<strong>SBD is always the priority.</strong> If a session runs long, cut accessories from the bottom up. Never cut the main lift or its sets.'
   ]},
-  {t:'Singles',ic:'S',bg:'#0c1e3a',tc:'#8bbfff',items:[
-    '<strong>Never grind a single.</strong> The block is exposure, not testing. Nothing here should be a fight.',
-    '<strong>If the top single lands above target RPE, stop there.</strong> Skip the backoffs that day. You got the exposure, that was the job.',
-    '<strong>5 minutes rest before the single.</strong> Rushing it wastes the whole point.',
-    '<strong>Warmups matter.</strong> Build in singles from about 60% — you want a few reps at speed before the top set, not a slow ramp of triples that fatigues you.'
+  {t:'When to deload',ic:'2',bg:'#291c03',tc:'#fbbf24',items:[
+    '<strong>Bar speed on the main lifts.</strong> The most reliable signal. If the prescribed load moves noticeably slower than the week before at the same RPE, fatigue is winning.',
+    '<strong>Knee ache returning.</strong> You now know what that means for you. It showed up in weeks 4–5 last time under far less volume. Do not train through it twice.',
+    '<strong>Sleep quality dropping, or waking unrefreshed.</strong> Classic overreaching marker and usually shows before performance does.',
+    '<strong>Two bad sessions in a row is noise. Four is a pattern.</strong> Deload on the pattern, not the noise.',
+    '<strong>Write down the week it happens.</strong> That number is the whole point of running the ramp this way.'
   ]},
-  {t:'Deadlift',ic:'D',bg:'#291c03',tc:'#fbbf24',items:[
-    '<strong>Always first lift of the day.</strong> You have failed a max pull twice, both times after squat and bench. This block deliberately gives you the fresh pull you have never tested.',
-    '<strong>Dead stop, always.</strong> Lose tension, regather, pull. Every rep is a fresh floor break — that is the quality that failed you.',
-    '<strong>Week 6 is 257.5.</strong> Just under what you missed on the mock day, but fresh and fed. If it moves well, the taper was the problem and not your strength.',
-    '<strong>Do not add weight because it feels good.</strong> The whole point is repeated successful exposure. Ego lifting here undoes the block.'
+  {t:'Nutrition',ic:'3',bg:'#0f2210',tc:'#7ed081',items:[
+    '<strong>Small surplus — roughly 250–300 above maintenance.</strong> Around 3,300–3,400 at 90kg with this training load.',
+    '<strong>Target 0.25kg a week.</strong> About 1kg a month. Faster than that as an advanced natural is mostly fat.',
+    '<strong>Protein 180–200g.</strong> No need to go higher in a surplus; carbs are doing more work here.',
+    '<strong>Carbs around training.</strong> You are running high volume — this is where the surplus earns its keep.',
+    '<strong>If the scale has not moved in two weeks, add 150.</strong> Do not add more than that at once.'
   ]},
-  {t:'Bench — new stance',ic:'B',bg:'#0f2210',tc:'#7ed081',items:[
-    '<strong>Wide stance from set one, week one.</strong> Including every warmup. Consistency is what makes it automatic.',
-    '<strong>Drive the feet out, not down.</strong> The out-cue is what stops the bum lifting — pushing down is what caused the redlight.',
-    '<strong>Day 5 is where it beds in.</strong> 20 paused reps a week at RPE 7 teaches the pattern. Technique changes need volume, not intensity.',
-    '<strong>Film a set every week.</strong> You cannot feel your own bum leaving the bench. Check it from the side.'
+  {t:'Deadlift — technique focus',ic:'4',bg:'#291c03',tc:'#fbbf24',items:[
+    '<strong>Two sessions a week now.</strong> Thursday heavy, Saturday light. Double the exposures to groove the pattern while fed and fresh.',
+    '<strong>Saturday has a hard RPE 6 ceiling.</strong> If it starts creeping up in load it becomes a second heavy day, and that is how you end up back where you were.',
+    '<strong>Dead stop on every rep, both sessions.</strong> Lose tension, regather, pull. Every rep is a fresh floor break.',
+    '<strong>Thursday is always first lift of the day.</strong> Nothing before it.',
+    '<strong>Film a set every couple of weeks.</strong> Consistency is the goal of this block and you cannot audit your own bar path from under it.'
   ]},
-  {t:'Squat',ic:'Q',bg:'#0c1e3a',tc:'#8bbfff',items:[
-    '<strong>This is confidence work.</strong> Your legs did 235 easily — the shakiness was 16 months of not visiting that neighbourhood, not a strength gap.',
-    '<strong>Five exposures above 220 in six weeks,</strong> against three in the last sixteen months. That is the fix.',
-    '<strong>If a single feels genuinely unsafe, rack it.</strong> Re-racking 245 on the mock day was the right call and it would be the right call here.',
-    '<strong>Keep the stance you have.</strong> Do not widen it to feel more stable — that loads the adductor harder at the bottom, not less.'
+  {t:'Knees',ic:'5',bg:'#081e18',tc:'#4ecfa0',items:[
+    '<strong>No leg press anywhere in this block.</strong> Hack squat replaces it for all quad work.',
+    '<strong>No pause squats.</strong> The other high knee-load movement from Phase 1 is out too.',
+    '<strong>Volume is going up, so watch them.</strong> They were clean in the deload but this block loads the quads harder than anything you have run recently.',
+    '<strong>If ache returns, that is a deload signal, not something to work around.</strong> Last time it was underfeeding; in a surplus it would mean volume.'
   ]},
-  {t:'Bodybuilding work',ic:'C',bg:'#1a1030',tc:'#c084fc',items:[
-    '<strong>Curls 3× a week, laterals 3×, calves 2×.</strong> Enough frequency to matter, low enough fatigue to be free.',
-    '<strong>These go last, always.</strong> If a session runs short on time, these are the first thing to cut — never the singles.',
-    '<strong>Take them close to failure.</strong> Unlike the barbell work, RPE 8–9 on curls and laterals costs you nothing systemically.',
-    '<strong>Retention, not growth.</strong> In a deficit you are holding what you have. The growth comes in Phase 2 — this keeps the tissue stimulated so it is there to build on.'
+  {t:'Accessories',ic:'6',bg:'#1a1030',tc:'#c084fc',items:[
+    '<strong>Biceps 3×, laterals 3×, rear delts 2×, calves 1×.</strong> Frequency high enough to matter, fatigue low enough to be nearly free.',
+    '<strong>Take these to failure.</strong> RPE 9 on curls and laterals costs nothing systemically. This is the opposite of the barbell work.',
+    '<strong>Overhead press is the one to progress.</strong> Treat it like a main lift — add weight when 8 reps get easy. Machine only as a substitute, not an alternation.',
+    '<strong>Face pulls and Z-twist both stay.</strong> Face pulls are rear delt plus scap; the Z-twist is external rotation. Different jobs, both cheap.',
+    '<strong>Cuff work stays light forever.</strong> If you are straining on the Z-twist it is too heavy and doing nothing.'
   ]},
-  {t:'Recovery',ic:'R',bg:'#081e18',tc:'#4ecfa0',items:[
-    '<strong>Rest: 5 min singles, 3 min backoffs, 60–90s accessories.</strong> Do not rush the heavy work to save time — cut an accessory instead.',
-    '<strong>Sleep is doing more work than usual.</strong> Underfed recovery leans harder on it. 8 hours is not optional this block.',
-    '<strong>No deload built in.</strong> At this volume six weeks straight is fine. If you are flat by week 4, drop the backoffs, keep the singles.',
-    '<strong>Adductor work stays in.</strong> Copenhagen twice a week and the machine once. Six months pain-free with 260 pulls means it is holding — keep it that way.'
-  ]},
-  {t:'After week 6',ic:'→',bg:'#202024',tc:'#8888a0',items:[
-    '<strong>Do not test.</strong> You will be at your lightest and most underfed. Roll straight into Phase 2 and test when you are fed.',
-    '<strong>Reassess at 87–88kg.</strong> Check body composition, see where the singles landed, then build the surplus block.',
-    '<strong>Phase 2 is 5–6 months</strong> at roughly 1kg a month back to 93kg. Volume comes back up hard, lower body gets priority.',
-    '<strong>Realistic target:</strong> 740–760 at 93kg. That is GL 97–99, comfortably past your lifetime best of 88.8.'
+  {t:'After this block',ic:'→',bg:'#202024',tc:'#8888a0',items:[
+    '<strong>Deload when the signals say so, then reassess.</strong> Likely a week of the same structure as the last deload.',
+    '<strong>The volume number is the output.</strong> Whatever week fatigue caught you at tells us how long future blocks should run before a planned deload.',
+    '<strong>Then repeat.</strong> Mass phase runs 5–6 months at roughly 1kg a month toward 93kg, in blocks like this one with planned deloads between.',
+    '<strong>Test when it is worth testing.</strong> Not at the end of every block. Fed, fresh, and after a genuine peaking block — not a mock meet at the end of a cut.'
   ]}
 ];
 
 let selW=0,selD=0,view=0;
-try{const s=JSON.parse(localStorage.getItem('p1_v1'));if(s){if(s.w>=0&&s.w<6)selW=s.w;if(s.d>=0&&s.d<5)selD=s.d;if(s.v>=0&&s.v<2)view=s.v}}catch(e){}
-function save(){try{localStorage.setItem('p1_v1',JSON.stringify({w:selW,d:selD,v:view}))}catch(e){}}
+try{const s=JSON.parse(localStorage.getItem('p2_v1'));if(s){if(s.w>=0&&s.w<6)selW=s.w;if(s.d>=0&&s.d<5)selD=s.d;if(s.v>=0&&s.v<2)view=s.v}}catch(e){}
+function save(){try{localStorage.setItem('p2_v1',JSON.stringify({w:selW,d:selD,v:view}))}catch(e){}}
 
 function setView(v){
   view=v;save();
@@ -334,36 +295,25 @@ function setView(v){
 
 function renderWeeks(){
   document.getElementById('weeks').innerHTML=[0,1,2,3,4,5].map(i=>
-    `<div class="wcard${i===selW?' sel':''}" onclick="sw(${i})">
-      <div class="wn">Week</div>
-      <div class="wt">${i+1}</div>
-      <div class="wr">RPE ${RPE[i]}</div>
-    </div>`).join('');
+    `<div class="wcard${i===selW?' sel':''}" onclick="sw(${i})"><div class="wn">Week</div><div class="wt">${i+1}</div><div class="wr">${ASETS[i]} sets acc</div></div>`).join('');
+  document.getElementById('setcount').textContent=SETCOUNT[selW];
 }
 
 function renderMain(){
   const d=DAYS[selD],s=sess(selW,selD);
   let h=`<div class="pnote">${WNOTES[selW]}</div>`;
   h+=`<div class="dtabs">${DAYS.map((x,i)=>`<button class="dtab${i===selD?' act':''}" onclick="sd(${i})">${x.n}</button>`).join('')}</div>`;
-  h+=`<div class="scard"><div class="shead">
-    <div class="sic" style="background:${d.bg};color:${d.tc}">${d.ic}</div>
-    <div><div class="sname">${d.n}: ${d.name}</div><div class="ssub">Week ${selW+1} · target RPE ${RPE[selW]}</div></div>
-  </div>`;
-  const tcl={c:'tc',v:'tv',a:'ta',r:'tr',b:'tb',s:'ts'};
-  const tlb={c:'Comp',v:'Variation',a:'Accessory',r:'Rehab',b:'Physique',s:'Backoff'};
+  h+=`<div class="scard"><div class="shead"><div class="sic" style="background:${d.bg};color:${d.tc}">${d.ic}</div><div><div class="sname">${d.n}</div><div class="ssub">${d.name} · week ${selW+1}</div></div></div>`;
+  const tcl={c:'tc',v:'tv',a:'ta',b:'tb',r:'tr'};
+  const tlb={c:'Comp',v:'Main',a:'Accessory',b:'Physique',r:'Cuff'};
   s.forEach(e=>{
-    h+=`<div class="exrow${e.bo?' bo':''}">
-      <div class="extop">
-        <div class="exname${e.bo?' dim':''}">${e.n}</div>
-        <div class="extags"><span class="tag ${tcl[e.t]}">${tlb[e.t]}</span><span class="rp ${rc(e.rpe)}">${e.rpe}</span></div>
-      </div>
+    h+=`<div class="exrow"><div class="extop"><div class="exname">${e.n}</div><div class="extags"><span class="tag ${tcl[e.t]}">${tlb[e.t]}</span><span class="rp ${rc(e.rpe)}">${e.rpe}</span></div></div>
       <div class="exdet">
         <div class="exd"><div class="exdl">Sets</div><div class="exdv">${e.s}</div></div>
         <div class="exd"><div class="exdl">Reps</div><div class="exdv">${e.rp}</div></div>
-        <div class="exd"><div class="exdl">Load</div><div class="exdv${e.t==='c'||e.t==='v'||e.t==='s'?' big':''}">${e.l}</div></div>
+        <div class="exd"><div class="exdl">Load</div><div class="exdv${e.t==='c'||e.t==='v'?' big':''}">${e.l}</div></div>
       </div>
-      <div class="exnote">${e.note}</div>
-    </div>`;
+      <div class="exnote">${e.note}</div></div>`;
   });
   h+=`</div>`;
   document.getElementById('main').innerHTML=h;
@@ -371,10 +321,7 @@ function renderMain(){
 
 function renderNotes(){
   document.getElementById('notes').innerHTML=NOTES.map(n=>
-    `<div class="ncard">
-      <div class="nhead"><div class="nic" style="background:${n.bg};color:${n.tc}">${n.ic}</div><div class="ntitle">${n.t}</div></div>
-      <div class="nbody">${n.items.map(i=>`<div class="nitem">${i}</div>`).join('')}</div>
-    </div>`).join('');
+    `<div class="ncard"><div class="nhead"><div class="nic" style="background:${n.bg};color:${n.tc}">${n.ic}</div><div class="ntitle">${n.t}</div></div><div class="nbody">${n.items.map(i=>`<div class="nitem">${i}</div>`).join('')}</div></div>`).join('');
 }
 
 function sw(i){selW=i;save();renderWeeks();renderMain()}
